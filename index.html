@@ -9,43 +9,45 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Pacifico&display=swap');
 
-        /* 1. DEFAULT: Mobile Background (Vertical) */
-        body::before {
-            background-color: #1a0b2e;
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('alvira-mobile-bg.jpg'); /* Put your 1080x1920 image name here */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            opacity: 0.10; 
-            z-index: -1; 
-            pointer-events: none;
+/* 1. ABSOLUTE WHITE-SCREEN PREVENTION */
+        html {
+            background-color: #1a0b2e; 
+            min-height: 100%;
         }
 
-        /* 2. OVERRIDE: Desktop Background (Horizontal) */
-        /* If the screen is wider than 768px (tablets and PCs), use this image instead */
-        @media (min-width: 768px) {
-            body::before {
-                background-image: url('alvira-desktop-bg.jpg'); /* Put your 1920x1080 image name here */
-            }
-        }
-        
         * { margin: 0; padding: 0; box-sizing: border-box; user-select: none; }
+
+        /* 2. DEFAULT: Mobile Background (Vertical + Purple Gradient Merged) */
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #1a0b2e 0%, #3b185f 100%);
-            background-attachment: fixed; /* THIS FIXES THE WHITE BACKGROUND BUG */
             color: white; 
             min-height: 100vh; 
             overflow-x: hidden;
             position: relative; 
             cursor: default; 
-            transition: background 1s ease;
+            
+            /* THIS COMBINES THE DEEP PURPLE AND YOUR IMAGE PERFECTLY */
+            background: 
+                linear-gradient(135deg, rgba(26, 11, 46, 0.90) 0%, rgba(59, 24, 95, 0.90) 100%),
+                url('alvira-mobile-bg.jpg');
+            
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* Locks it when scrolling */
+            background-repeat: no-repeat;
+        }
+
+        /* 3. OVERRIDE: Desktop Background (Horizontal + Purple Gradient Merged) */
+        @media (min-width: 768px) {
+            body {
+                background: 
+                    linear-gradient(135deg, rgba(26, 11, 46, 0.90) 0%, rgba(59, 24, 95, 0.90) 100%),
+                    url('alvira-desktop-bg.jpg');
+                background-size: cover;
+                background-position: center;
+                background-attachment: fixed;
+                background-repeat: no-repeat;
+            }
         }
 
         /* UI POLISH & GLOW */
