@@ -11,6 +11,7 @@
 
         /* 1. DEFAULT: Mobile Background (Vertical) */
         body::before {
+            background-color: #1a0b2e;
             content: "";
             position: fixed;
             top: 0;
@@ -21,7 +22,7 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-            opacity: 0.30; 
+            opacity: 0.10; 
             z-index: -1; 
             pointer-events: none;
         }
@@ -38,8 +39,13 @@
         body {
             font-family: 'Poppins', sans-serif;
             background: linear-gradient(135deg, #1a0b2e 0%, #3b185f 100%);
-            color: white; min-height: 100vh; overflow-x: hidden;
-            position: relative; cursor: default; transition: background 1s ease;
+            background-attachment: fixed; /* THIS FIXES THE WHITE BACKGROUND BUG */
+            color: white; 
+            min-height: 100vh; 
+            overflow-x: hidden;
+            position: relative; 
+            cursor: default; 
+            transition: background 1s ease;
         }
 
         /* UI POLISH & GLOW */
